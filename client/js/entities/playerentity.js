@@ -10,7 +10,7 @@ game.PlayerEntity = me.Entity.extend({
     this._super(me.Entity, 'init', [x, y, settings]);
 
     // set the default horizontal & vertical speed (accel vector)
-    //this.body.setVelocity(3, 15);
+    this.body.setVelocity(3, 3);
 
     // set the display to follow our position on both axis
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -78,9 +78,22 @@ game.PlayerEntity = me.Entity.extend({
     else {
       this.body.vel.x = 0;
       this.body.vel.y = 0;
-
       // change to the standing animation
-      this.renderable.setCurrentAnimation("faceDown");
+      if (this.renderable.isCurrentAnimation("walkUp")) {
+        this.renderable.setCurrentAnimation("faceUp");
+      }
+      else if (this.renderable.isCurrentAnimation("walkDown")) {
+        this.renderable.setCurrentAnimation("faceDown");
+      }
+      else if (this.renderable.isCurrentAnimation("walkUp")) {
+        this.renderable.setCurrentAnimation("faceLeft");
+      }
+      else if (this.renderable.isCurrentAnimation("walkRight")) {
+        this.renderable.setCurrentAnimation("faceRight");
+      }
+      else {
+        this.renderable.setCurrentAnimation("faceDown");
+      }
     }
 
     // apply physics to the body (this moves the entity)

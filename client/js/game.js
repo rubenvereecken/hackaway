@@ -55,6 +55,9 @@ var game = {
         me.input.bindKey(me.input.KEY.DOWN, "down");
         me.input.bindKey(me.input.KEY.UP, "up");
 
+        // gravity has to be disabled
+        me.sys.gravity = 0;
+        
         // display the menu title
         // me.state.change(me.state.MENU);
 

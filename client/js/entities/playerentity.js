@@ -11,6 +11,7 @@ game.PlayerEntity = me.Entity.extend({
 
     // set the default horizontal & vertical speed (accel vector)
     this.body.setVelocity(3, 3);
+    this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 
     // set the display to follow our position on both axis
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -33,6 +34,8 @@ game.PlayerEntity = me.Entity.extend({
 
     // set the standing animation as default
     this.renderable.setCurrentAnimation("faceDown");
+
+
   },
 
   /*

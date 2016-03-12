@@ -3,7 +3,7 @@ var global = {
   network: {
     socket: undefined,
     host: 'localhost',
-    port: 8080
+    port: 9000
   },
   state: {
     localPlayer: undefined,
@@ -62,6 +62,8 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.DOWN, "down");
         me.input.bindKey(me.input.KEY.UP, "up");
+        me.input.bindKey(me.input.KEY.ENTER, "action");
+        console.log(me.input)
 
         // gravity has to be disabled
         me.sys.gravity = 0;

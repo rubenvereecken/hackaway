@@ -23,15 +23,6 @@ class BackendServerProtocol(WebSocketServerProtocol):
 
     def onOpen(self):
         self.factory.register(self)
-        user = self.redis.get(self.peer)
-        if not user:
-            user = {'status': 'off',
-                    'nick': 'Guest'+str(random.randint(10000, 99999)),
-                    'pos_x': 0.0,
-                    'pos_y': 0.0,
-                    }
-        user['status'] = 'on'
-        self.redis.hmset(self.peer, user)
 
     def onMessage(self, payload, isBinary):
         if isBinary:
@@ -43,6 +34,17 @@ class BackendServerProtocol(WebSocketServerProtocol):
 
         if data.get('nick'):
             self.redis.hset(self.peer, 'nick', data['nick'])
+
+        if data.get('join'):
+            user = self.redis.get(self.peer)
+            if not user:
+                user = {'status': 'off',
+                        'nick': 'Guest'+str(random.randint(10000, 99999)),
+                        'pos_x': 0.0,
+                        'pos_y': 0.0,
+                        }
+            user['status'] = 'on'
+            self.redis.hmset(self.peer, user)
 
         if data.get('pos'):
             self.redis.hmset(self.peer, data['pos'])

@@ -3,25 +3,30 @@ game.Button = me.GUI_Object.extend({
         settings = {
             name: type,
             image: type,
-            spritewidth: 380,
-            spriteheight: 100
+            framewidth: 250,
+            frameheight: 100
         };
         this.type = type
         this.playing = false;
+        console.log('created button')
+        this.z = 1000;
 
-        this.parent(x,y,settings);
+        this._super(me.GUI_Object, 'init', [x, y, settings]);
     },
 
     onClick: function() {
-        else if(this.type === "playbutton") {
-            if(!this.playing) {
+        console.log('onclick', this.type)
+        if(this.type === "join") {
+            if (!this.playing) {
                 var data = {
+                    join: null,
                     name: "guest"
                 };
-                global.network.socket.emit("join", data);
+                global.network.socket.send(data);
                 this.playing = true;
+                me.state.change(me.state.PLAY);
             }
-        }else {
+        } else {
             // throw error
         }
 

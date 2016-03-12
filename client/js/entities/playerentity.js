@@ -10,7 +10,7 @@ game.PlayerEntity = me.Entity.extend({
     this._super(me.Entity, 'init', [x, y, settings]);
 
     // set the default horizontal & vertical speed (accel vector)
-    this.body.setVelocity(3, 15);
+    //this.body.setVelocity(3, 15);
 
     // set the display to follow our position on both axis
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -42,6 +42,7 @@ game.PlayerEntity = me.Entity.extend({
     if (me.input.isKeyPressed('left')) {
       // update the entity velocity
       this.body.vel.x -= this.body.accel.x * me.timer.tick;
+      this.body.vel.y = 0;
       // change to the walking animation
       if (!this.renderable.isCurrentAnimation("walkLeft")) {
         this.renderable.setCurrentAnimation("walkLeft");
@@ -50,7 +51,7 @@ game.PlayerEntity = me.Entity.extend({
     else if (me.input.isKeyPressed('right')) {
       // update the entity velocity
       this.body.vel.x += this.body.accel.x * me.timer.tick;
-
+      this.body.vel.y = 0;
       // change to the walking animation
       if (!this.renderable.isCurrentAnimation("walkRight")) {
         this.renderable.setCurrentAnimation("walkRight");
@@ -59,7 +60,7 @@ game.PlayerEntity = me.Entity.extend({
     else if (me.input.isKeyPressed('down')) {
       // update the entity velocity
       this.body.vel.y += this.body.accel.y * me.timer.tick;
-
+      this.body.vel.x = 0;
       // change to the walking animation
       if (!this.renderable.isCurrentAnimation("walkDown")) {
         this.renderable.setCurrentAnimation("walkDown");
@@ -68,7 +69,7 @@ game.PlayerEntity = me.Entity.extend({
     else if (me.input.isKeyPressed('up')) {
       // update the entity velocity
       this.body.vel.y -= this.body.accel.y * me.timer.tick;
-
+      this.body.vel.x = 0;
       // change to the walking animation
       if (!this.renderable.isCurrentAnimation("walkUp")) {
         this.renderable.setCurrentAnimation("walkUp");
@@ -99,24 +100,5 @@ game.PlayerEntity = me.Entity.extend({
   onCollision : function (response, other) {
     // Make all other objects solid
     return true;
-  },
-
-  /**
-  * callback when everything is loaded
-  */
-  loaded : function () {
-    // set the "Play/Ingame" Screen Object
-    me.state.set(me.state.PLAY, new game.PlayScreen());
-
-    // register our player entity in the object pool
-    me.pool.register("mainPlayer", game.PlayerEntity);
-
-    // enable the keyboard
-    me.input.bindKey(me.input.KEY.LEFT,  "left");
-    me.input.bindKey(me.input.KEY.RIGHT, "right");
-    me.input.bindKey(me.input.KEY.X,     "jump", true);
-
-    // start the game
-    me.state.change(me.state.PLAY);
   }
 });

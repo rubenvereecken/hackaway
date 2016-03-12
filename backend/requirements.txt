@@ -1,1 +1,1 @@
-autobahn[asyncio]
+autobahn[twisted]

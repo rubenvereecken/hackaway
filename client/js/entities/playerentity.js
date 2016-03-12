@@ -7,6 +7,9 @@ game.PlayerEntity = me.Entity.extend({
    */
   init : function (x, y, settings) {
     // call the constructor
+    settings.frameheight = 47;
+    settings.framewidth = 37;
+    settings.image = 'player';
     this._super(me.Entity, 'init', [x, y, settings]);
 
     // set the default horizontal & vertical speed (accel vector)

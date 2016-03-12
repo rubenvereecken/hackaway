@@ -30,6 +30,11 @@ game.resources = [
         "src": "data/img/sprite/gripe_run_right.png"
     },
     {
+        "name": "player",
+        "type": "image",
+        "src": "data/img/sprite/player.png"
+    },
+    {
         "name": "spinning_coin_gold",
         "type": "image",
         "src": "data/img/sprite/spinning_coin_gold.png"

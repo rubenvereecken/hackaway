@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#aaaaff" nextobjectid="12">
- <tileset firstgid="1" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="14" columns="20">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#aaaaff" nextobjectid="8">
+ <tileset firstgid="1" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="140" columns="20">
   <image source="../../../img/map/area01_level_tiles.png" width="640" height="241"/>
  </tileset>
  <layer name="Background" width="20" height="15">
@@ -14,10 +14,11 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="mainPlayer" x="19" y="128" width="32" height="64">
+  <object id="1" name="mainPlayer" x="8" y="137" width="50" height="50">
    <properties>
-    <property name="framewidth" value="64"/>
-    <property name="image" value="gripe_run_right"/>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="37"/>
+    <property name="image" value="player"/>
    </properties>
   </object>
  </objectgroup>
@@ -25,10 +26,5 @@
   <object id="3" x="-1" y="193" width="63" height="224"/>
   <object id="6" x="58" y="389" width="112" height="51"/>
   <object id="7" x="129" y="352" width="510" height="101"/>
- </objectgroup>
- <objectgroup name="CoinEntity" offsetx="-61" offsety="18">
-  <object id="8" name="CoinEntity" x="272" y="322"/>
-  <object id="10" x="361" y="305" width="3"/>
-  <object id="11" name="EnemyEntity" x="358" y="293" width="28" height="28"/>
  </objectgroup>
 </map>

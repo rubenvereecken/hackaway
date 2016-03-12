@@ -20,6 +20,12 @@ game.LobbyScreen = me.ScreenObject.extend({
         console.log(global.network.socket);
         global.network.socket.onopen = this.onSocketConnected(this.joinbutton);
 
+        this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+          if (action === "action") {
+              me.state.change(me.state.PLAY);
+          }
+        });
+
         // Add our renderable features to the screen
         me.game.world.addChild(new me.ColorLayer("background", "#000", 1));
         me.game.world.addChild(this.joinbutton);

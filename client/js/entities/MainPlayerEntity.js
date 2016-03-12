@@ -1,0 +1,3 @@
+game.MainPlayerEntity = PlayerEntity.extend({
+
+});

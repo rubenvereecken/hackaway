@@ -46,8 +46,9 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("mainPlayer", game.PlayerEntity);
-        me.pool.register("CoinEntity", game.CoinEntity);
-        me.pool.register("EnemyEntity", game.EnemyEntity);
+        me.pool.register("coinEntity", game.CoinEntity);
+        me.pool.register("enemyEntity", game.EnemyEntity);
+        me.pool.register("farmEntity", game.FarmEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
@@ -57,7 +58,7 @@ var game = {
 
         // gravity has to be disabled
         me.sys.gravity = 0;
-        
+
         // display the menu title
         // me.state.change(me.state.MENU);
 

@@ -58,10 +58,7 @@ game.EnemyEntity = me.Entity.extend({
 
     // update the body movement
     this.body.update(dt);
-
-    // handle collisions against other shapes
-    me.collision.check(this);
-
+    
     // return true if we moved or if the renderable was updated
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
   },
